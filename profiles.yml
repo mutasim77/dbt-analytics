@@ -1,0 +1,9 @@
+my-bigquery-db:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: copper-axiom-326903
+      dataset: dbt_taxi
+      threads: 4 
