@@ -3,7 +3,8 @@ my-bigquery-db:
   outputs:
     dev:
       type: bigquery
-      method: oauth
+      method: service-account
       project: copper-axiom-326903
       dataset: dbt_taxi
       threads: 4 
+      keyfile: $KEY_FILE
