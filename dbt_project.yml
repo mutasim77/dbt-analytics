@@ -26,9 +26,6 @@ vars:
   payment_type_values: [0, 1, 2, 3, 4, 5, 6]
   borough_name: ["Queens", "Bronx", "EWR"]
 
-dbt-cloud:
-  - project-id: 362972
-  
 seeds: 
     taxi_rides_ny:
         taxi_zone_lookup:
