@@ -32,7 +32,7 @@ jobs:
         python-version: '3.11'
 
     - name: Decode keyfile
-      run: echo "${{ secrets.ENCODED_KEY_JSON }}" | base64 -d > keyfile.json
+      run: echo "${{ secrets.KEYS_JSON }}" | base64 -d > keyfile.json
 
     - name: Set up environment variables
       run: |
