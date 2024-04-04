@@ -130,17 +130,17 @@ Deployment in dbt involves automating the process of building and deploying data
 ### GitHub Action Deployment 🍟
 One common approach to deployment is utilizing GitHub Actions, a feature of GitHub that allows you to automate workflows. By adding a GitHub Action to your repository, you can trigger a build pipeline to execute dbt commands whenever new commits are pushed to the repository. This automates the deployment process, ensuring that changes are applied promptly and consistently.
 
-### Benefits of Deployment Automation
+### Benefits of Deployment Automation 🦋
 - **Efficiency:** Automation reduces manual intervention, streamlining the deployment process and minimizing the risk of human error.
 - **Consistency:** Automated deployments ensure that changes are applied uniformly across environments, maintaining consistency and reliability.
 - **Timeliness:** By triggering deployments automatically upon new commits, you ensure that updates are applied promptly, enabling timely insights and decision-making.
 
-### Continuous Integration and Deployment (CI/CD)
+### CI/CD 🔗 
 Integrating dbt deployment into a CI/CD pipeline enables continuous integration and deployment of data models. This ensures that changes are automatically tested and deployed, facilitating agile development and rapid iteration.
 
 ---
 
-### Conclusion 📝
+## Conclusion 📝
 So let's see what I've learned about dbt from my point of view:
 
 In my data analytics journey, dbt has been a game-changer. It's like my trusty toolkit for transforming and analyzing data effortlessly.
