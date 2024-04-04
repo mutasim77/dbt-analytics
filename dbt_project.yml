@@ -2,7 +2,7 @@ name: 'taxi_rides_ny'
 version: '1.0.0'
 config-version: 2
 
-profile: 'default'
+profile: 'my-bigquery-db'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
