@@ -1,0 +1,28 @@
+version: 2
+
+macros:
+  # Convert to String
+  - name: convert_to_string
+    description: "This macro converts the provided column_name to a string data type."
+    arguments:
+      - name: column_name
+        type: string
+        description: "The name of the column to be converted to a string."
+
+  # Convert to String
+  - name: calculate_trip_duration
+    description: > 
+      This macro calculates the duration of a trip in seconds 
+      based on the provided pickup and dropoff datetime values.
+    arguments: []
+    
+  # Get the payment type
+  - name: get_payment_type_description
+    description: >
+      This macro receives a payment_type and returns the corresponding description.
+    arguments:
+      - name: payment_type
+        type: int
+        description: > 
+          payment_type value.
+          Must be one of the accepted values, otherwise the macro will return null

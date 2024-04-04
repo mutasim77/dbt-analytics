@@ -1,0 +1,24 @@
+version: 2
+
+seeds:
+  - name: taxi_zone_lookup
+    description: "Taxi lookup zones in CSV format."
+    columns:
+      - name: locationid
+        description: "The ID of the location."
+        tests:
+          - not_null
+      - name: borough
+        description: "The borough where the taxi zone is located."
+        tests:
+          - not_null
+      - name: zone
+        description: "The zone of the taxi lookup."
+        tests:
+          - not_null
+      - name: service_zone
+        description: "The service zone of the taxi lookup."
+        tests:
+          - not_null
+
+
