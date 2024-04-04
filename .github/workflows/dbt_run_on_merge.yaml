@@ -1,7 +1,5 @@
 name: dbt CI pipeline
 
-# Triggers on push to main branch
-# or Pull Request to any branch
 on:
   push:
     branches:
@@ -10,7 +8,6 @@ on:
     branches:
       - "*"
 
-# Set needed env variables
 env:
   DBT_ACCOUNT_ID: ${{ secrets.DBT_ACCOUNT_ID }}
   DBT_PROJECT_ID: ${{ secrets.DBT_PROJECT_ID }}
@@ -29,18 +26,25 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Setup Python environment
+    - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
-        python-version: "3.11"
+        python-version: '3.11'
 
-    - name: Install Python dependencies
+    - name: Decode keyfile
+      run: echo "${{ secrets.ENCODED_KEY_JSON }}" | base64 -d > keyfile.json
+
+    - name: Set up environment variables
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install dbt
-        python -m pip dbt-core
+        export KEY_FILE="keyfile.json"
+        echo "KEY_FILE=$KEY_FILE" >> $GITHUB_ENV
 
-    - name: Install dbt deps
+    - name: Install dbt dependencies
+      run: |
+        pip install --upgrade pip
+        pip install dbt
+
+    - name: Install dbt dependencies
       run: dbt deps
 
     - name: Run Tests
