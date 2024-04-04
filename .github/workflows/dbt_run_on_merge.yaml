@@ -43,6 +43,9 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install dbt
+        pip install dbt-bigquery --force-reinstall
+        pip install dbt-core
+        
 
     - name: Install dbt dependencies
       run: dbt deps
