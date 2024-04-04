@@ -1,0 +1,49 @@
+name: dbt CI pipeline
+
+# Triggers on push to main branch
+# or Pull Request to any branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
+
+# Set needed env variables
+env:
+  DBT_ACCOUNT_ID: ${{ secrets.DBT_ACCOUNT_ID }}
+  DBT_PROJECT_ID: ${{ secrets.DBT_PROJECT_ID }}
+  DBT_PR_JOB_ID:  ${{ secrets.DBT_JOB_ID }}
+  DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
+  DBT_JOB_CAUSE: 'GitHub Pipeline CI Job'
+  DBT_JOB_BRANCH: ${{ github.ref }}
+
+jobs:
+  ci-tests:
+    name: dbt run and test CI checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.11"
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install dbt
+
+    - name: Install dbt deps
+      run: dbt deps
+
+    - name: Run Tests
+      run: dbt test
+
+    - name: Build dbt Project
+      run: dbt build
